@@ -12,8 +12,8 @@ impl Individual2D {
         let mut rng = rand::thread_rng();
         let mut i = Individual2D {
             fitness: 0.0,
-            x: rng.gen_range(-1.0, 1.0),
-            y: rng.gen_range(-1.0, 1.0),
+            x: rng.gen(),
+            y: rng.gen(),
         };
 
         i.update_fitness();
@@ -33,15 +33,22 @@ impl Individual2D {
     }
 
     fn update_fitness(&mut self) {
-        self.fitness = 15.0 * self.x + 30.0 * self.y + 4.0 * self.x * self.y - 2.0 * self.x.powf(2.0) - 4.0 * self.y.powf(2.0);
+        self.fitness = 5.0 * self.x - self.x.powf(2.0) + 8.0 * self.y - 2.0 * self.y.powf(2.0);
     }
 
     fn crossover(&self, other: &Individual2D) -> Individual2D {
-        Individual2D {
+        let mut i = Individual2D {
             fitness: 0.0,
             x: self.x + other.y,
             y: self.y + other.x
+        };
+
+        while 3.0 * i.x + 2.0 * i.y > 6.0 {
+            i.x = i.x / 2.0;
+            i.y = i.y / 2.0;
         }
+
+        return i;
     }
 
     fn mutate(&mut self) {
@@ -49,6 +56,11 @@ impl Individual2D {
             let mut rng = rand::thread_rng();
             self.x += rng.gen_range(-5.0, 5.0);
             self.y += rng.gen_range(-5.0, 5.0);
+        }
+
+        while 3.0 * self.x + 2.0 * self.y > 6.0 {
+            self.x = self.x / 2.0;
+            self.y = self.y / 2.0;
         }
     }
 
