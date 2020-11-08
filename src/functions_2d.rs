@@ -37,11 +37,18 @@ impl Individual2D {
     }
 
     fn crossover(&self, other: &Individual2D) -> Individual2D {
-        Individual2D {
+        let mut i = Individual2D {
             fitness: 0.0,
             x: self.x + other.y,
             y: self.y + other.x
+        };
+
+        while i.x + 2.0 * i.y > 30.0 {
+            i.x = i.x / 2.0;
+            i.y = i.y / 2.0;
         }
+
+        return i;
     }
 
     fn mutate(&mut self) {
@@ -49,6 +56,11 @@ impl Individual2D {
             let mut rng = rand::thread_rng();
             self.x += rng.gen_range(-5.0, 5.0);
             self.y += rng.gen_range(-5.0, 5.0);
+        }
+
+        while self.x + 2.0 * self.y > 30.0 {
+            self.x = self.x / 2.0;
+            self.y = self.y / 2.0;
         }
     }
 

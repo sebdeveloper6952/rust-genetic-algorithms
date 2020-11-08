@@ -54,7 +54,7 @@ impl Individual2D {
         while 3.0 * i.x + 2.0 * i.y > 18.0 {
             i.x = i.x / 2.0;
             i.y = i.y / 2.0;
-        } 
+        }
         
 
         return i;

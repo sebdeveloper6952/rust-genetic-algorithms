@@ -3,44 +3,7 @@ mod functions_2d;
 mod functions_2d_2;
 mod functions_2d_3;
 
-// use tsp::Individual;
-
 fn main() {
-    // the population
-    // let mut pop = Vec::new();
-
-    // for _i in 0..100 {
-    //     pop.push(Individual::new());
-    // }
-
-    // // sort population according to fitness
-    // pop.sort_by_key(|a| a.fitness);
-
-    // for _ in 0..100000 {
-    //     // println!("iteration {}", i);
-
-    //     // reproduction
-    //     for i in 0..5 {
-    //         let new = pop[i].crossover(&pop[i + 1]);
-    //         pop.push(new);
-    //     }
-
-    //     // sort by fitness
-    //     pop.sort_by_key(|a| a.fitness);
-
-    //     // drop worst 5
-    //     for _i in 0..5 {
-    //         pop.pop();
-    //     }
-        
-    //     // population at end of iteration
-    //     // for individual in &pop {
-    //     //     println!("{:?}", individual);
-    //     // }
-    //     // println!("");
-    // }
-
-    // println!("best individual {:?}", pop[0]);
 
     // Ej. 1
     let mut pop = Vec::new();
